@@ -1,0 +1,977 @@
+[
+  {
+    "version": "1.14.4",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.4-20200616.39",
+    "files": [
+      {
+        "filename": "go-1.14.4-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.4-20200616.39/go-1.14.4-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.4-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.4-20200616.39/go-1.14.4-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.4-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.4-20200616.39/go-1.14.4-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.14.3",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.3-20200616.38",
+    "files": [
+      {
+        "filename": "go-1.14.3-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.3-20200616.38/go-1.14.3-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.3-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.3-20200616.38/go-1.14.3-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.3-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.3-20200616.38/go-1.14.3-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.14.2",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.2-20200616.37",
+    "files": [
+      {
+        "filename": "go-1.14.2-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.2-20200616.37/go-1.14.2-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.2-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.2-20200616.37/go-1.14.2-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.2-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.2-20200616.37/go-1.14.2-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.14.1",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.1-20200616.36",
+    "files": [
+      {
+        "filename": "go-1.14.1-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.1-20200616.36/go-1.14.1-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.1-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.1-20200616.36/go-1.14.1-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.1-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.1-20200616.36/go-1.14.1-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.14.0",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.0-20200616.35",
+    "files": [
+      {
+        "filename": "go-1.14.0-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.0-20200616.35/go-1.14.0-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.0-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.0-20200616.35/go-1.14.0-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.0-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.0-20200616.35/go-1.14.0-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.12",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.12-20200616.34",
+    "files": [
+      {
+        "filename": "go-1.13.12-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.12-20200616.34/go-1.13.12-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.12-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.12-20200616.34/go-1.13.12-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.12-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.12-20200616.34/go-1.13.12-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.11",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.11-20200616.33",
+    "files": [
+      {
+        "filename": "go-1.13.11-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.11-20200616.33/go-1.13.11-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.11-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.11-20200616.33/go-1.13.11-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.11-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.11-20200616.33/go-1.13.11-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.10",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.10-20200616.32",
+    "files": [
+      {
+        "filename": "go-1.13.10-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.10-20200616.32/go-1.13.10-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.10-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.10-20200616.32/go-1.13.10-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.10-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.10-20200616.32/go-1.13.10-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.9",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.9-20200616.31",
+    "files": [
+      {
+        "filename": "go-1.13.9-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.9-20200616.31/go-1.13.9-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.9-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.9-20200616.31/go-1.13.9-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.9-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.9-20200616.31/go-1.13.9-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.8",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.8-20200616.30",
+    "files": [
+      {
+        "filename": "go-1.13.8-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.8-20200616.30/go-1.13.8-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.8-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.8-20200616.30/go-1.13.8-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.8-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.8-20200616.30/go-1.13.8-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.7",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.7-20200616.29",
+    "files": [
+      {
+        "filename": "go-1.13.7-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.7-20200616.29/go-1.13.7-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.7-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.7-20200616.29/go-1.13.7-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.7-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.7-20200616.29/go-1.13.7-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.6",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.6-20200616.28",
+    "files": [
+      {
+        "filename": "go-1.13.6-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.6-20200616.28/go-1.13.6-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.6-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.6-20200616.28/go-1.13.6-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.6-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.6-20200616.28/go-1.13.6-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.5",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.5-20200616.27",
+    "files": [
+      {
+        "filename": "go-1.13.5-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.5-20200616.27/go-1.13.5-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.5-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.5-20200616.27/go-1.13.5-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.5-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.5-20200616.27/go-1.13.5-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.4",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.4-20200616.26",
+    "files": [
+      {
+        "filename": "go-1.13.4-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.4-20200616.26/go-1.13.4-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.4-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.4-20200616.26/go-1.13.4-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.4-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.4-20200616.26/go-1.13.4-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.3",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.3-20200616.25",
+    "files": [
+      {
+        "filename": "go-1.13.3-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.3-20200616.25/go-1.13.3-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.3-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.3-20200616.25/go-1.13.3-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.3-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.3-20200616.25/go-1.13.3-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.2",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.2-20200616.24",
+    "files": [
+      {
+        "filename": "go-1.13.2-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.2-20200616.24/go-1.13.2-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.2-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.2-20200616.24/go-1.13.2-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.2-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.2-20200616.24/go-1.13.2-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.1",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.1-20200616.23",
+    "files": [
+      {
+        "filename": "go-1.13.1-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.1-20200616.23/go-1.13.1-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.1-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.1-20200616.23/go-1.13.1-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.1-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.1-20200616.23/go-1.13.1-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.0",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.0-20200616.22",
+    "files": [
+      {
+        "filename": "go-1.13.0-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.0-20200616.22/go-1.13.0-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.0-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.0-20200616.22/go-1.13.0-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.0-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.0-20200616.22/go-1.13.0-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.17",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.17-20200616.21",
+    "files": [
+      {
+        "filename": "go-1.12.17-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.17-20200616.21/go-1.12.17-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.17-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.17-20200616.21/go-1.12.17-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.17-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.17-20200616.21/go-1.12.17-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.16",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.16-20200616.20",
+    "files": [
+      {
+        "filename": "go-1.12.16-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.16-20200616.20/go-1.12.16-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.16-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.16-20200616.20/go-1.12.16-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.16-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.16-20200616.20/go-1.12.16-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.15",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.15-20200616.19",
+    "files": [
+      {
+        "filename": "go-1.12.15-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.15-20200616.19/go-1.12.15-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.15-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.15-20200616.19/go-1.12.15-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.15-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.15-20200616.19/go-1.12.15-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.14",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.14-20200616.18",
+    "files": [
+      {
+        "filename": "go-1.12.14-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.14-20200616.18/go-1.12.14-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.14-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.14-20200616.18/go-1.12.14-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.14-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.14-20200616.18/go-1.12.14-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.13",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.13-20200616.17",
+    "files": [
+      {
+        "filename": "go-1.12.13-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.13-20200616.17/go-1.12.13-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.13-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.13-20200616.17/go-1.12.13-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.13-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.13-20200616.17/go-1.12.13-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.12",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.12-20200616.16",
+    "files": [
+      {
+        "filename": "go-1.12.12-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.12-20200616.16/go-1.12.12-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.12-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.12-20200616.16/go-1.12.12-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.12-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.12-20200616.16/go-1.12.12-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.11",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.11-20200616.15",
+    "files": [
+      {
+        "filename": "go-1.12.11-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.11-20200616.15/go-1.12.11-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.11-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.11-20200616.15/go-1.12.11-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.11-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.11-20200616.15/go-1.12.11-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.10",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.10-20200616.14",
+    "files": [
+      {
+        "filename": "go-1.12.10-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.10-20200616.14/go-1.12.10-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.10-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.10-20200616.14/go-1.12.10-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.10-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.10-20200616.14/go-1.12.10-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.9",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.9-20200616.13",
+    "files": [
+      {
+        "filename": "go-1.12.9-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.9-20200616.13/go-1.12.9-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.9-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.9-20200616.13/go-1.12.9-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.9-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.9-20200616.13/go-1.12.9-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.8",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.8-20200616.12",
+    "files": [
+      {
+        "filename": "go-1.12.8-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.8-20200616.12/go-1.12.8-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.8-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.8-20200616.12/go-1.12.8-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.8-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.8-20200616.12/go-1.12.8-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.7",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.7-20200616.11",
+    "files": [
+      {
+        "filename": "go-1.12.7-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.7-20200616.11/go-1.12.7-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.7-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.7-20200616.11/go-1.12.7-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.7-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.7-20200616.11/go-1.12.7-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.6",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.6-20200616.10",
+    "files": [
+      {
+        "filename": "go-1.12.6-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.6-20200616.10/go-1.12.6-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.6-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.6-20200616.10/go-1.12.6-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.6-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.6-20200616.10/go-1.12.6-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.5",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.5-20200616.9",
+    "files": [
+      {
+        "filename": "go-1.12.5-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.5-20200616.9/go-1.12.5-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.5-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.5-20200616.9/go-1.12.5-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.5-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.5-20200616.9/go-1.12.5-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.4",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.4-20200616.8",
+    "files": [
+      {
+        "filename": "go-1.12.4-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.4-20200616.8/go-1.12.4-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.4-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.4-20200616.8/go-1.12.4-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.4-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.4-20200616.8/go-1.12.4-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.3",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.3-20200616.7",
+    "files": [
+      {
+        "filename": "go-1.12.3-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.3-20200616.7/go-1.12.3-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.3-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.3-20200616.7/go-1.12.3-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.3-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.3-20200616.7/go-1.12.3-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.2",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.2-20200616.6",
+    "files": [
+      {
+        "filename": "go-1.12.2-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.2-20200616.6/go-1.12.2-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.2-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.2-20200616.6/go-1.12.2-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.2-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.2-20200616.6/go-1.12.2-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.1",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.1-20200616.5",
+    "files": [
+      {
+        "filename": "go-1.12.1-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.1-20200616.5/go-1.12.1-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.1-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.1-20200616.5/go-1.12.1-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.1-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.1-20200616.5/go-1.12.1-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.12.0",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.12.0-20200616.4",
+    "files": [
+      {
+        "filename": "go-1.12.0-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.0-20200616.4/go-1.12.0-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.0-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.0-20200616.4/go-1.12.0-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.12.0-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.12.0-20200616.4/go-1.12.0-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.11.13",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.11.13-20200616.3",
+    "files": [
+      {
+        "filename": "go-1.11.13-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.11.13-20200616.3/go-1.11.13-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.11.13-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.11.13-20200616.3/go-1.11.13-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.11.13-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.11.13-20200616.3/go-1.11.13-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.10.8",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.10.8-20200616.2",
+    "files": [
+      {
+        "filename": "go-1.10.8-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.10.8-20200616.2/go-1.10.8-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.10.8-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.10.8-20200616.2/go-1.10.8-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.10.8-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.10.8-20200616.2/go-1.10.8-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.9.7",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.9.7-20200616.1",
+    "files": [
+      {
+        "filename": "go-1.9.7-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.9.7-20200616.1/go-1.9.7-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.9.7-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.9.7-20200616.1/go-1.9.7-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.9.7-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.9.7-20200616.1/go-1.9.7-win32-x64.zip"
+      }
+    ]
+  }
+]

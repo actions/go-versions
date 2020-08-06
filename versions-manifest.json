@@ -1,5 +1,30 @@
 [
   {
+    "version": "1.14.7",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.7-20200806.3",
+    "files": [
+      {
+        "filename": "go-1.14.7-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.7-20200806.3/go-1.14.7-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.7-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.7-20200806.3/go-1.14.7-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.14.7-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.14.7-20200806.3/go-1.14.7-win32-x64.zip"
+      }
+    ]
+  },
+  {
     "version": "1.14.6",
     "stable": true,
     "release_url": "https://github.com/actions/go-versions/releases/tag/1.14.6-20200717.1",
@@ -171,6 +196,31 @@
         "arch": "x64",
         "platform": "win32",
         "download_url": "https://github.com/actions/go-versions/releases/download/1.14.0-20200616.35/go-1.14.0-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.13.15",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.13.15-20200806.4",
+    "files": [
+      {
+        "filename": "go-1.13.15-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.15-20200806.4/go-1.13.15-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.15-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.15-20200806.4/go-1.13.15-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.13.15-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.13.15-20200806.4/go-1.13.15-win32-x64.zip"
       }
     ]
   },

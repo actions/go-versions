@@ -7,7 +7,13 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
 function Get-UseGoLogs {
-    $logsFolderPath = Join-Path -Path $env:AGENT_HOMEDIRECTORY -ChildPath "_diag" | Join-Path -ChildPath "pages"
+    $homeDir = $env:HOME
+    if ([string]::IsNullOrEmpty($homeDir)) {
+        # GitHub Windows images don't have `HOME` variable
+        $homeDir = $env:HOMEDRIVE
+    }
+
+    $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve
 
     $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
         $logContent = Get-Content $_.Fullname -Raw

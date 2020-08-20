@@ -1,4 +1,4 @@
-name: Generate Go.js
+name: Generate Go package
 on:
 # TODO: currently workflow dispatch endpoint does not work. I will investigate
   workflow_dispatch:
@@ -18,7 +18,7 @@ env:
 
 jobs:
   build_go:
-    name: Build Go ${{ github.event.inputs.VERSION }} ${{ matrix.platform }}
+    name: Build Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -50,86 +50,85 @@ jobs:
         name: go-${{ env.VERSION }}-${{ matrix.platform }}
         path: /home/runner/work/go-versions/artifact
 
-  test_go:
-    name: Test Go ${{ github.event.inputs.VERSION }} ${{ matrix.platform }}
-    needs: build_go
-    runs-on: ${{ matrix.os }}-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-        - os: ubuntu
-          platform: linux
-        - os: macos
-          platform: darwin
-        - os: windows
-          platform: win32
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
+  # test_go:
+  #   name: Test Go ${{ github.event.inputs.VERSION }} ${{ matrix.platform }}
+  #   needs: build_go
+  #   runs-on: ${{ matrix.os }}-latest
+  #   strategy:
+  #     fail-fast: false
+  #     matrix:
+  #       include:
+  #       - os: ubuntu-latest
+  #         platform: linux
+  #       - os: macos-latest
+  #         platform: darwin
+  #       - os: windows-latest
+  #         platform: win32
+  #   steps:
+  #   - uses: actions/checkout@v2
+  #     with:
+  #       submodules: true
 
-    - name: Set AGENT_TOOLSDIRECTORY variable
-      if: matrix.platform == 'win32'
-      run: |
-        # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
-        echo ::set-env name=AGENT_TOOLSDIRECTORY::$RUNNER_TOOL_CACHE
-      shell: bash
+  #   - name: Set AGENT_TOOLSDIRECTORY variable
+  #     if: matrix.platform == 'win32'
+  #     run: |
+  #       # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
+  #       echo ::set-env name=AGENT_TOOLSDIRECTORY::$RUNNER_TOOL_CACHE
+  #     shell: bash
 
-    - name: Fully cleanup the toolcache directory before testing
-      run: |
-        ./helpers/clean-toolcache.ps1 -ToolName "go"
-      shell: pwsh
+  #   - name: Fully cleanup the toolcache directory before testing
+  #     run: ./helpers/clean-toolcache.ps1 -ToolName "go"
+  #     shell: pwsh
 
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        path: ${{ runner.temp }}
+  #   - name: Download artifact
+  #     uses: actions/download-artifact@v2
+  #     with:
+  #       path: ${{ runner.temp }}
 
-    - name: Extract files
-      run: |
-        if ('${{ matrix.platform }}' -eq 'win32') {
-          $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.7z"
-          7z.exe x "$artifactName" -y | Out-Null 
-        } else {
-          $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.tar.gz"
-          tar -xzf $artifactName
-        }
-      working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
-      shell: pwsh
+  #   - name: Extract files
+  #     run: |
+  #       if ('${{ matrix.platform }}' -eq 'win32') {
+  #         $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.7z"
+  #         7z.exe x "$artifactName" -y | Out-Null 
+  #       } else {
+  #         $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.tar.gz"
+  #         tar -xzf $artifactName
+  #       }
+  #     working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
+  #     shell: pwsh
 
-    - name: Apply build artifact to the local machine
-      run: |
-        if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
-      working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
-      shell: pwsh
+  #   - name: Apply build artifact to the local machine
+  #     run: |
+  #       if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
+  #     working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
+  #     shell: pwsh
 
-    - name: Setup Go ${{ env.VERSION }}
-      uses: actions/setup-go@v2.1.1
-      with:
-        go-version: ${{ env.VERSION }}
+  #   - name: Setup Go ${{ env.VERSION }}
+  #     uses: actions/setup-go@v2.1.1
+  #     with:
+  #       go-version: ${{ env.VERSION }}
 
-    - name: Wait for the logs
-      run: |
-        Write-Host "Fake step that do nothing"
-        Write-Host "We need it because log of previous step 'Setup Go' is not available here yet."
-        Write-Host "In testing step (Go.Tests.ps1) we analyze build log of 'Setup Go' task"
-        Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
-      shell: pwsh
+  #   - name: Wait for the logs
+  #     run: |
+  #       Write-Host "Fake step that do nothing"
+  #       Write-Host "We need it because log of previous step 'Setup Go' is not available here yet."
+  #       Write-Host "In testing step (Go.Tests.ps1) we analyze build log of 'Setup Go' task"
+  #       Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
+  #     shell: pwsh
 
-    - name: Run tests
-      run: |
-        Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
-        Import-Module Pester
-        $pesterParams = @{
-          Path="./Go.Tests.ps1";
-          Parameters=@{
-            Version="$env:VERSION";
-          }
-        }
-        Invoke-Pester -Script $pesterParams -EnableExit -OutputFile "test_results.xml" -OutputFormat NUnitXml
-      working-directory: ./tests
-      shell: pwsh
+  #   - name: Run tests
+  #     run: |
+  #       Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
+  #       Import-Module Pester
+  #       $pesterParams = @{
+  #         Path="./Go.Tests.ps1";
+  #         Parameters=@{
+  #           Version="$env:VERSION";
+  #         }
+  #       }
+  #       Invoke-Pester -Script $pesterParams -EnableExit -OutputFile "test_results.xml" -OutputFormat NUnitXml
+  #     working-directory: ./tests
+  #     shell: pwsh
 
   publish_release:
     name: Publish release
@@ -177,8 +176,8 @@ jobs:
         asset_name: go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.${{ matrix.extension }}
         asset_content_type: application/zip
 
-  create_pr:
-    name: Create Pull Request
+  trigger_pr:
+    name: Trigger Pull Request
     needs: upload_assets
     runs-on: ubuntu-latest
     steps:

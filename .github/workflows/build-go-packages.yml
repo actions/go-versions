@@ -133,7 +133,7 @@ jobs:
   publish_release:
     name: Publish release
     if: github.event.inputs.PUBLISH_RELEASES == 'true'
-    needs: test_go
+    # needs: test_go
     runs-on: ubuntu-latest
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}

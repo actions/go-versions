@@ -171,7 +171,7 @@ jobs:
 
   trigger_pr:
     name: Trigger Pull Request
-    needs: upload_assets
+    needs:   publish_release
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

@@ -170,20 +170,15 @@ jobs:
           }
 
   trigger_pr:
-    name: Trigger Pull Request
-    needs:   publish_release
+    name: Trigger "Create Pull Request" workflow
+    needs: publish_release
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-      with:
-        submodules: true
-
     - name: Trigger "Create Pull Request" workflow
       uses: actions/github-script@v2
       with:
         github-token: ${{ secrets.PERSONAL_TOKEN }}
         script: |
-          # TODO: currently 'actions.createWorkflowDispatch' function does not work. I will investigate  
           github.repos.createDispatchEvent({
             owner: context.repo.owner,
             repo: context.repo.repo,

@@ -32,7 +32,7 @@ jobs:
 
     - name: Build Go ${{ env.VERSION }}
       run: |
-        ./builders/build-node.ps1 -Version $env:VERSION `
+        ./builders/build-go.ps1 -Version $env:VERSION `
                                   -Platform ${{ matrix.platform }} `
                                   -Architecture $env:ARCHITECTURE
       shell: pwsh

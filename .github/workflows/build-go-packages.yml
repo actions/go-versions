@@ -49,86 +49,82 @@ jobs:
       with:
         name: go-${{ env.VERSION }}-${{ matrix.platform }}
         path: /home/runner/work/go-versions/artifact
+  test_go:
+    name: Test Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
+    needs: build_go
+    runs-on: ${{ matrix.os }}
+    env: 
+      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - os: ubuntu-latest
+          platform: linux
+        - os: macos-latest
+          platform: darwin
+        - os: windows-latest
+          platform: win32
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
 
-  # test_go:
-  #   name: Test Go ${{ github.event.inputs.VERSION }} ${{ matrix.platform }}
-  #   needs: build_go
-  #   runs-on: ${{ matrix.os }}-latest
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       include:
-  #       - os: ubuntu-latest
-  #         platform: linux
-  #       - os: macos-latest
-  #         platform: darwin
-  #       - os: windows-latest
-  #         platform: win32
-  #   steps:
-  #   - uses: actions/checkout@v2
-  #     with:
-  #       submodules: true
+    - name: Fully cleanup the toolcache directory before testing
+      run: ./helpers/clean-toolcache.ps1 -ToolName "go"
+      shell: pwsh
 
-  #   - name: Set AGENT_TOOLSDIRECTORY variable
-  #     if: matrix.platform == 'win32'
-  #     run: |
-  #       # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
-  #       echo ::set-env name=AGENT_TOOLSDIRECTORY::$RUNNER_TOOL_CACHE
-  #     shell: bash
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        path: ${{ runner.temp }}
 
-  #   - name: Fully cleanup the toolcache directory before testing
-  #     run: ./helpers/clean-toolcache.ps1 -ToolName "go"
-  #     shell: pwsh
+    - name: Extract files
+      run: |
+        if ('${{ matrix.platform }}' -eq 'win32') {
+          $artifactName = "${{ env.ARTIFACT_NAME }}.7z"
+          7z.exe x "$artifactName" -y | Out-Null 
+        } else {
+          $artifactName = "${{ env.ARTIFACT_NAME }}.tar.gz"
+          tar -xzf $artifactName
+        }
+      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+      shell: pwsh
 
-  #   - name: Download artifact
-  #     uses: actions/download-artifact@v2
-  #     with:
-  #       path: ${{ runner.temp }}
+    - name: Apply build artifact to the local machine
+      run: |
+        if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
+      working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
+      shell: pwsh
 
-  #   - name: Extract files
-  #     run: |
-  #       if ('${{ matrix.platform }}' -eq 'win32') {
-  #         $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.7z"
-  #         7z.exe x "$artifactName" -y | Out-Null 
-  #       } else {
-  #         $artifactName = "go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.tar.gz"
-  #         tar -xzf $artifactName
-  #       }
-  #     working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
-  #     shell: pwsh
+    - name: Setup Go ${{ env.VERSION }}
+      uses: actions/setup-go@v2.1.1
+      with:
+        go-version: ${{ env.VERSION }}
 
-  #   - name: Apply build artifact to the local machine
-  #     run: |
-  #       if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
-  #     working-directory: ${{ runner.temp }}/go-${{ env.VERSION }}-${{ matrix.platform }}
-  #     shell: pwsh
+    - name: Wait for the logs
+      run: |
+        Write-Host "Fake step that do nothing"
+        Write-Host "We need it because log of previous step 'Setup Go' is not available here yet."
+        Write-Host "In testing step (Go.Tests.ps1) we analyze build log of 'Setup Go' task"
+        Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
+        Write-Host "Random values:"
+        for ($i = 0; $i -lt 200; $i++) { Get-Random }
+      shell: pwsh
 
-  #   - name: Setup Go ${{ env.VERSION }}
-  #     uses: actions/setup-go@v2.1.1
-  #     with:
-  #       go-version: ${{ env.VERSION }}
-
-  #   - name: Wait for the logs
-  #     run: |
-  #       Write-Host "Fake step that do nothing"
-  #       Write-Host "We need it because log of previous step 'Setup Go' is not available here yet."
-  #       Write-Host "In testing step (Go.Tests.ps1) we analyze build log of 'Setup Go' task"
-  #       Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
-  #     shell: pwsh
-
-  #   - name: Run tests
-  #     run: |
-  #       Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
-  #       Import-Module Pester
-  #       $pesterParams = @{
-  #         Path="./Go.Tests.ps1";
-  #         Parameters=@{
-  #           Version="$env:VERSION";
-  #         }
-  #       }
-  #       Invoke-Pester -Script $pesterParams -EnableExit -OutputFile "test_results.xml" -OutputFormat NUnitXml
-  #     working-directory: ./tests
-  #     shell: pwsh
+    - name: Run tests
+      run: |
+        Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
+        Import-Module Pester
+        $pesterParams = @{
+          Path="./Go.Tests.ps1";
+          Parameters=@{
+            Version="$env:VERSION";
+          }
+        }
+        Invoke-Pester -Script $pesterParams -EnableExit
+      working-directory: ./tests
+      shell: pwsh
 
   publish_release:
     name: Publish release

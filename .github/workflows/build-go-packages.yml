@@ -1,6 +1,5 @@
 name: Generate Go package
 on:
-# TODO: currently workflow dispatch endpoint does not work. I will investigate
   workflow_dispatch:
     inputs:
       VERSION:
@@ -20,6 +19,8 @@ jobs:
   build_go:
     name: Build Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
     runs-on: ubuntu-latest
+    env: 
+      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
     strategy:
       fail-fast: false
       matrix:
@@ -29,17 +30,9 @@ jobs:
       with:
         submodules: true
 
-    - name: Create artifact directories
-      run: |
-        binariesDirectory=$RUNNER_WORKSPACE/binaries
-        echo ::set-env name=BINARIES_DIRECTORY::$binariesDirectory
-        mkdir $binariesDirectory
-        artifactDirectory=$RUNNER_WORKSPACE/artifact
-        echo ::set-env name=ARTIFACT_DIRECTORY::$artifactDirectory
-        mkdir $artifactDirectory
     - name: Build Go ${{ env.VERSION }}
       run: |
-        ./builders/build-go.ps1 -Version $env:VERSION `
+        ./builders/build-node.ps1 -Version $env:VERSION `
                                   -Platform ${{ matrix.platform }} `
                                   -Architecture $env:ARCHITECTURE
       shell: pwsh
@@ -47,8 +40,9 @@ jobs:
     - name: Publish artifact
       uses: actions/upload-artifact@v2
       with:
-        name: go-${{ env.VERSION }}-${{ matrix.platform }}
-        path: /home/runner/work/go-versions/artifact
+        name: ${{ env.ARTIFACT_NAME }}
+        path: ${{ runner.temp }}/artifact
+
   test_go:
     name: Test Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
     needs: build_go

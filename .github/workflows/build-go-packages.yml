@@ -6,7 +6,7 @@ on:
       VERSION:
         description: 'Go version to build and upload'
         required: true
-        default: '14.2.0'
+        default: '1.15.0'
       PUBLISH_RELEASES:
         description: 'Whether to publish releases'
         required: true
@@ -138,6 +138,8 @@ jobs:
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
+    - uses: actions/download-artifact@v2
+
     - name: Publish Release ${{ env.VERSION }}
       id: create_release
       uses: actions/create-release@v1
@@ -147,34 +149,25 @@ jobs:
         tag_name: ${{ env.VERSION }}-${{ github.run_id }}
         release_name: ${{ env.VERSION }}
         body: |
-          Upload Go.js ${{ env.VERSION }}
-  upload_assets:
-    name: Upload assets for ${{ matrix.platform }}
-    needs: publish_release
-    runs-on: ubuntu-latest
-    env:
-      UPLOAD_URL: ${{ needs.publish_release.outputs.upload_url }}
-    strategy:
-      matrix:
-        extension: ['tar.gz']
-        platform: [linux, darwin] 
-        include:
-        - platform: win32
-          extension: 7z
-    steps:
-    - uses: actions/download-artifact@v2
-      with:
-        name: go-${{ env.VERSION }}-${{ matrix.platform }}
+          Upload Go ${{ env.VERSION }}
 
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Upload release assets
+      uses: actions/github-script@v2
       with:
-        upload_url: ${{ env.UPLOAD_URL }}
-        asset_path: ./go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.${{ matrix.extension }}
-        asset_name: go-${{ env.VERSION }}-${{ matrix.platform }}-${{ env.ARCHITECTURE }}.${{ matrix.extension }}
-        asset_content_type: application/zip
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const fs = require('fs');
+          for (let artifactDir of fs.readdirSync('.')) {
+            let artifactName = fs.readdirSync(`${artifactDir}`)[0];
+            console.log(`Upload ${artifactName} asset`);
+            github.repos.uploadReleaseAsset({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              release_id: ${{ steps.create_release.outputs.id }},
+              name: artifactName,
+              data: fs.readFileSync(`./${artifactDir}/${artifactName}`) 
+            });
+          }
 
   trigger_pr:
     name: Trigger Pull Request

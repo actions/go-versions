@@ -13,7 +13,6 @@ on:
 
 env:
   VERSION: ${{ github.event.inputs.VERSION }}
-  ARCHITECTURE: x64
 
 jobs:
   build_go:
@@ -31,11 +30,10 @@ jobs:
         submodules: true
 
     - name: Build Go ${{ env.VERSION }}
+      shell: pwsh
       run: |
         ./builders/build-go.ps1 -Version $env:VERSION `
-                                  -Platform ${{ matrix.platform }} `
-                                  -Architecture $env:ARCHITECTURE
-      shell: pwsh
+                                -Platform ${{ matrix.platform }}
 
     - name: Publish artifact
       uses: actions/upload-artifact@v2
@@ -47,6 +45,9 @@ jobs:
     name: Test Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
     needs: build_go
     runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: pwsh
     env: 
       ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
     strategy:
@@ -66,7 +67,6 @@ jobs:
 
     - name: Fully cleanup the toolcache directory before testing
       run: ./helpers/clean-toolcache.ps1 -ToolName "go"
-      shell: pwsh
 
     - name: Download artifact
       uses: actions/download-artifact@v2
@@ -83,13 +83,11 @@ jobs:
           tar -xzf $artifactName
         }
       working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
-      shell: pwsh
 
     - name: Apply build artifact to the local machine
       run: |
         if ('${{ matrix.platform }}' -eq 'win32') { powershell ./setup.ps1 } else { sh ./setup.sh }
       working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
-      shell: pwsh
 
     - name: Setup Go ${{ env.VERSION }}
       uses: actions/setup-go@v2.1.1
@@ -104,7 +102,6 @@ jobs:
         Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
         Write-Host "Random values:"
         for ($i = 0; $i -lt 200; $i++) { Get-Random }
-      shell: pwsh
 
     - name: Run tests
       run: |
@@ -118,7 +115,6 @@ jobs:
         }
         Invoke-Pester -Script $pesterParams -EnableExit
       working-directory: ./tests
-      shell: pwsh
 
   publish_release:
     name: Publish release

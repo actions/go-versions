@@ -25,7 +25,7 @@ Describe "Go" {
 
     It "version is correct" {
         $versionOutput = Invoke-Expression "go version"
-        $versionOutput | Should -Match "go version go'$Version' linux/amd64"
+        $versionOutput | Should -Match "go version go$Version linux/amd64"
     }
 
     It "is used from tool-cache" {

@@ -24,7 +24,7 @@ Describe "Go" {
     }
 
     It "version is correct" {
-        $versionOutput = '$(go version) -match "go(?<version>\d+\.\d+\.\d+)" | Out-Null', '$Matches.Version' | Invoke-Expression
+        $versionOutput = Invoke-Expression "go version"
         $versionOutput | Should -Match $Version
     }
 

@@ -24,8 +24,9 @@ Describe "Go" {
     }
 
     It "version is correct" {
-        $versionOutput = Invoke-Expression "go version"
-        $versionOutput | Should -Match "go version go$Version linux/amd64"
+        $(go version) -match "go(?<version>\d+\.\d+\.\d+)" | Out-Null
+        $versionOutput = $Matches.Version
+        $versionOutput | Should -Match $Version
     }
 
     It "is used from tool-cache" {

@@ -24,7 +24,7 @@ Describe "Go" {
     }
 
     It "version is correct" {
-        $versionOutput = Invoke-Expression "go --version"
+        $versionOutput = Invoke-Expression "go version"
         $versionOutput | Should -Match $Version
     }
 

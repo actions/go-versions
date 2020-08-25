@@ -1,28 +1,28 @@
 class GoBuilder {
     <#
     .SYNOPSIS
-    Base Node.js builder class.
+    Base Go builder class.
 
     .DESCRIPTION
-    Base Node.js builder class that contains general builder methods.
+    Base Go builder class that contains general builder methods.
 
     .PARAMETER Version
-    The version of Node.js that should be built.
+    The version of Go that should be built.
 
     .PARAMETER Platform
-    The platform of Node.js that should be built.
+    The platform of Go that should be built.
 
     .PARAMETER Architecture
-    The architecture with which Node.js should be built.
+    The architecture with which Go should be built.
 
     .PARAMETER TempFolderLocation
-    The location of temporary files that will be used during Node.js package generation.
+    The location of temporary files that will be used during Go package generation.
 
     .PARAMETER WorkFolderLocation
     The location of installation files.
 
     .PARAMETER ArtifactFolderLocation
-    The location of generated Node.js artifact.
+    The location of generated Go artifact.
 
     .PARAMETER InstallationTemplatesLocation
     The location of installation script template. Using "installers" folder from current repository.

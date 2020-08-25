@@ -15,6 +15,8 @@ BeforeAll {
     }
 }
 
+[version]$Version = $env:VERSION
+
 Describe "Go" {
     It "is available" {
         "go version" | Should -ReturnZeroExitCode
@@ -22,9 +24,9 @@ Describe "Go" {
 
     It "version is correct" {
         $versionOutput = Invoke-Expression -Command "go version"
-        $finalVersion = ($env:VERSION).ToString(3)
+        $finalVersion = $Version.ToString(3)
         If ($Version.Build -eq "0"){
-            $finalVersion = ($env:VERSION).ToString(2)
+            $finalVersion = $Version.ToString(2)
         }
         $versionOutput | Should -Match $finalVersion
     }
@@ -47,10 +49,10 @@ Describe "Go" {
         $useGoLogContent | Should -Match "Found in cache"
     }
 
-    Set-Location -Path "source"
-    $sourceLocation = Get-Location
 
     It "Run simple code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $simpleLocation = Join-Path -Path $sourceLocation -ChildPath "simple"
         Set-Location -Path $simpleLocation
         "go run simple.go" | Should -ReturnZeroExitCode
@@ -59,6 +61,8 @@ Describe "Go" {
     }
 
     It "Run maps code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $mapsLocation = Join-Path -Path $sourceLocation -ChildPath "maps"
         Set-Location -Path $mapsLocation
         "go run maps.go" | Should -ReturnZeroExitCode
@@ -67,6 +71,8 @@ Describe "Go" {
     }
 
     It "Run methods code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $methodsLocation = Join-Path -Path $sourceLocation -ChildPath "methods"
         Set-Location -Path $methodsLocation
         "go run methods.go" | Should -ReturnZeroExitCode

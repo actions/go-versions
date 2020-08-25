@@ -49,10 +49,10 @@ Describe "Go" {
         $useGoLogContent | Should -Match "Found in cache"
     }
 
-    Set-Location -Path "source"
-    $sourceLocation = Get-Location
 
     It "Run simple code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $simpleLocation = Join-Path -Path $sourceLocation -ChildPath "simple"
         Set-Location -Path $simpleLocation
         "go run simple.go" | Should -ReturnZeroExitCode
@@ -61,6 +61,8 @@ Describe "Go" {
     }
 
     It "Run maps code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $mapsLocation = Join-Path -Path $sourceLocation -ChildPath "maps"
         Set-Location -Path $mapsLocation
         "go run maps.go" | Should -ReturnZeroExitCode
@@ -69,6 +71,8 @@ Describe "Go" {
     }
 
     It "Run methods code" {
+        Set-Location -Path "source"
+        $sourceLocation = Get-Location
         $methodsLocation = Join-Path -Path $sourceLocation -ChildPath "methods"
         Set-Location -Path $methodsLocation
         "go run methods.go" | Should -ReturnZeroExitCode

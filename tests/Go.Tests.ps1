@@ -7,17 +7,13 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
 function Get-UseGoLogs {
-    $homeDir = $env:HOME
-    if ([string]::IsNullOrEmpty($homeDir)) {
-        # GitHub Windows images don't have `HOME` variable
-        $homeDir = $env:HOMEDRIVE
-    }
-
+    # GitHub Windows images don't have `HOME` variable
+    $homeDir = $env:HOME ?? $env:HOMEDRIVE
     $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve
 
     $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
         $logContent = Get-Content $_.Fullname -Raw
-        return $logContent -match "GoTool"
+        return $logContent -match "setup-go@v"
     } | Select-Object -First 1
     return $useGoLogFile.Fullname
 }
@@ -39,7 +35,10 @@ Describe "Go" {
     It "is used from tool-cache" {
         $goPath = (Get-Command "go").Path
         $goPath | Should -Not -BeNullOrEmpty
-        $expectedPath = Join-Path -Path $env:AGENT_TOOLSDIRECTORY -ChildPath "go"
+        
+        # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
+        $toolcacheDir = $env:AGENT_TOOLSDIRECTORY ?? $env:RUNNER_TOOL_CACHE
+        $expectedPath = Join-Path -Path $toolcacheDir -ChildPath "go"
         $goPath.startsWith($expectedPath) | Should -BeTrue -Because "'$goPath' is not started with '$expectedPath'"
     }
 
@@ -48,7 +47,7 @@ Describe "Go" {
         $useGoLogFile = Get-UseGoLogs
         $useGoLogFile | Should -Exist
         $useGoLogContent = Get-Content $useGoLogFile -Raw
-        $useGoLogContent | Should -Match "Found tool in cache"
+        $useGoLogContent | Should -Match "Found in cache"
     }
 
     Set-Location -Path "source"

@@ -1,25 +1,25 @@
 class GoBuilder {
     <#
     .SYNOPSIS
-    Base Go builder class.
+    Base Node.js builder class.
 
     .DESCRIPTION
-    Base Go builder class that contains general builder methods.
+    Base Node.js builder class that contains general builder methods.
 
     .PARAMETER Version
-    The version of Go that should be built.
+    The version of Node.js that should be built.
 
     .PARAMETER Platform
-    The platform of Go that should be built.
+    The platform of Node.js that should be built.
 
     .PARAMETER Architecture
-    The architecture with which Go should be built.
+    The architecture with which Node.js should be built.
 
     .PARAMETER TempFolderLocation
-    The location of temporary files that will be used during Go package generation. Using system BUILD_STAGINGDIRECTORY variable value.
+    The location of temporary files that will be used during Node.js package generation.
 
     .PARAMETER ArtifactLocation
-    The location of generated Go artifact. Using system environment BUILD_BINARIESDIRECTORY variable value.
+    The location of generated Node.js artifact.
 
     .PARAMETER InstallationTemplatesLocation
     The location of installation script template. Using "installers" folder from current repository.
@@ -40,9 +40,8 @@ class GoBuilder {
         $this.Architecture = $architecture
 
         $this.TempFolderLocation = [IO.Path]::GetTempPath()
-        $this.WorkFolderLocation = $env:BINARIES_DIRECTORY
-        $this.ArtifactFolderLocation = $env:ARTIFACT_DIRECTORY
-        
+        $this.WorkFolderLocation = Join-Path $env:RUNNER_TEMP "binaries"
+        $this.ArtifactFolderLocation = Join-Path $env:RUNNER_TEMP "artifact"
 
         $this.InstallationTemplatesLocation = Join-Path -Path $PSScriptRoot -ChildPath "../installers"
     }
@@ -94,6 +93,10 @@ class GoBuilder {
         .SYNOPSIS
         Generates Go artifact from downloaded binaries.
         #>
+
+        Write-Host "Create WorkFolderLocation and ArtifactFolderLocation folders"
+        New-Item -Path $this.WorkFolderLocation -ItemType "directory"
+        New-Item -Path $this.ArtifactFolderLocation -ItemType "directory"
 
         Write-Host "Download Go $($this.Version) [$($this.Architecture)] executable..."
         $binariesArchivePath = $this.Download()

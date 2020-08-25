@@ -15,6 +15,8 @@ BeforeAll {
     }
 }
 
+[version]$Version = $env:VERSION
+
 Describe "Go" {
     It "is available" {
         "go version" | Should -ReturnZeroExitCode
@@ -22,9 +24,9 @@ Describe "Go" {
 
     It "version is correct" {
         $versionOutput = Invoke-Expression -Command "go version"
-        $finalVersion = ($env:VERSION).ToString(3)
+        $finalVersion = $Version.ToString(3)
         If ($Version.Build -eq "0"){
-            $finalVersion = ($env:VERSION).ToString(2)
+            $finalVersion = $Version.ToString(2)
         }
         $versionOutput | Should -Match $finalVersion
     }

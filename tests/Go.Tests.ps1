@@ -2,6 +2,8 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
 BeforeAll {
+    Set-Location -Path "source"
+    $sourceLocation = Get-Location
     function Get-UseGoLogs {
         # GitHub Windows images don't have `HOME` variable
         $homeDir = $env:HOME ?? $env:HOMEDRIVE
@@ -15,7 +17,6 @@ BeforeAll {
     }
 }
 
-[version]$Version = $env:VERSION
 
 Describe "Go" {
     It "is available" {
@@ -23,6 +24,7 @@ Describe "Go" {
     }
 
     It "version is correct" {
+        [version]$Version = $env:VERSION
         $versionOutput = Invoke-Expression -Command "go version"
         $finalVersion = $Version.ToString(3)
         If ($Version.Build -eq "0"){
@@ -51,8 +53,6 @@ Describe "Go" {
 
 
     It "Run simple code" {
-        Set-Location -Path "source"
-        $sourceLocation = Get-Location
         $simpleLocation = Join-Path -Path $sourceLocation -ChildPath "simple"
         Set-Location -Path $simpleLocation
         "go run simple.go" | Should -ReturnZeroExitCode
@@ -61,8 +61,6 @@ Describe "Go" {
     }
 
     It "Run maps code" {
-        Set-Location -Path "source"
-        $sourceLocation = Get-Location
         $mapsLocation = Join-Path -Path $sourceLocation -ChildPath "maps"
         Set-Location -Path $mapsLocation
         "go run maps.go" | Should -ReturnZeroExitCode
@@ -71,8 +69,6 @@ Describe "Go" {
     }
 
     It "Run methods code" {
-        Set-Location -Path "source"
-        $sourceLocation = Get-Location
         $methodsLocation = Join-Path -Path $sourceLocation -ChildPath "methods"
         Set-Location -Path $methodsLocation
         "go run methods.go" | Should -ReturnZeroExitCode

@@ -165,8 +165,9 @@ jobs:
       with:
         github-token: ${{ secrets.PERSONAL_TOKEN }}
         script: |
-          github.repos.createDispatchEvent({
+          github.actions.createWorkflowDispatch({
             owner: context.repo.owner,
             repo: context.repo.repo,
-            event_type: 'create-pr'
-          }); 
+            workflow_id: 'create-pr.yml',
+            ref: 'main'
+          });

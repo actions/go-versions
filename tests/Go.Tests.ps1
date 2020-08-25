@@ -1,21 +1,18 @@
-param (
-    [version] [Parameter (Mandatory = $true)] [ValidateNotNullOrEmpty()]
-    $Version
-)
-
 Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
-function Get-UseGoLogs {
-    # GitHub Windows images don't have `HOME` variable
-    $homeDir = $env:HOME ?? $env:HOMEDRIVE
-    $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve
+BeforeAll {
+    function Get-UseNodeLogs {
+        # GitHub Windows images don't have `HOME` variable
+        $homeDir = $env:HOME ?? $env:HOMEDRIVE
+        $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve
 
-    $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
-        $logContent = Get-Content $_.Fullname -Raw
-        return $logContent -match "setup-go@v"
-    } | Select-Object -First 1
-    return $useGoLogFile.Fullname
+        $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
+            $logContent = Get-Content $_.Fullname -Raw
+            return $logContent -match "setup-go@v"
+        } | Select-Object -First 1
+        return $useGoLogFile.Fullname
+    }
 }
 
 Describe "Go" {
@@ -25,9 +22,9 @@ Describe "Go" {
 
     It "version is correct" {
         $versionOutput = Invoke-Expression -Command "go version"
-        $finalVersion = $Version.ToString(3)
+        $finalVersion = $env:VERSION.ToString(3)
         If ($Version.Build -eq "0"){
-            $finalVersion = $Version.ToString(2)
+            $finalVersion = $env:VERSION.ToString(2)
         }
         $versionOutput | Should -Match $finalVersion
     }

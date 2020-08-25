@@ -18,7 +18,10 @@ class GoBuilder {
     .PARAMETER TempFolderLocation
     The location of temporary files that will be used during Node.js package generation.
 
-    .PARAMETER ArtifactLocation
+    .PARAMETER WorkFolderLocation
+    The location of installation files.
+
+    .PARAMETER ArtifactFolderLocation
     The location of generated Node.js artifact.
 
     .PARAMETER InstallationTemplatesLocation

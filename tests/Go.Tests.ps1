@@ -2,7 +2,7 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
 BeforeAll {
-    function Get-UseNodeLogs {
+    function Get-UseGoLogs {
         # GitHub Windows images don't have `HOME` variable
         $homeDir = $env:HOME ?? $env:HOMEDRIVE
         $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve

@@ -14,6 +14,10 @@ on:
 env:
   VERSION: ${{ github.event.inputs.VERSION }}
 
+defaults:
+  run:
+    shell: pwsh
+
 jobs:
   build_go:
     name: Build Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
@@ -45,9 +49,6 @@ jobs:
     name: Test Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
     needs: build_go
     runs-on: ${{ matrix.os }}
-    defaults:
-      run:
-        shell: pwsh
     env: 
       ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
     strategy:
@@ -105,7 +106,7 @@ jobs:
 
     - name: Run tests
       run: |
-        Install-Module Pester -Force -Scope CurrentUser -RequiredVersion 4.10.1
+        Install-Module Pester -Force -Scope CurrentUser
         Import-Module Pester
         $pesterParams = @{
           Path="./Go.Tests.ps1";
@@ -113,7 +114,7 @@ jobs:
             Version="$env:VERSION";
           }
         }
-        Invoke-Pester -Script $pesterParams -EnableExit
+        Invoke-Pester -Script ./Go.Tests.ps1 -EnableExit
       working-directory: ./tests
 
   publish_release:

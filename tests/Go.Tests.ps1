@@ -1,20 +1,22 @@
-param (
-    [version] [Parameter (Mandatory = $true)] [ValidateNotNullOrEmpty()]
-    $Version
-)
-
 Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
-function Get-UseGoLogs {
-    $logsFolderPath = Join-Path -Path $env:AGENT_HOMEDIRECTORY -ChildPath "_diag" | Join-Path -ChildPath "pages"
+BeforeAll {
+    Set-Location -Path "source"
+    $sourceLocation = Get-Location
+    function Get-UseGoLogs {
+        # GitHub Windows images don't have `HOME` variable
+        $homeDir = $env:HOME ?? $env:HOMEDRIVE
+        $logsFolderPath = Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages" -Resolve
 
-    $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
-        $logContent = Get-Content $_.Fullname -Raw
-        return $logContent -match "GoTool"
-    } | Select-Object -First 1
-    return $useGoLogFile.Fullname
+        $useGoLogFile = Get-ChildItem -Path $logsFolderPath | Where-Object {
+            $logContent = Get-Content $_.Fullname -Raw
+            return $logContent -match "setup-go@v"
+        } | Select-Object -First 1
+        return $useGoLogFile.Fullname
+    }
 }
+
 
 Describe "Go" {
     It "is available" {
@@ -22,6 +24,7 @@ Describe "Go" {
     }
 
     It "version is correct" {
+        [version]$Version = $env:VERSION
         $versionOutput = Invoke-Expression -Command "go version"
         $finalVersion = $Version.ToString(3)
         If ($Version.Build -eq "0"){
@@ -33,7 +36,10 @@ Describe "Go" {
     It "is used from tool-cache" {
         $goPath = (Get-Command "go").Path
         $goPath | Should -Not -BeNullOrEmpty
-        $expectedPath = Join-Path -Path $env:AGENT_TOOLSDIRECTORY -ChildPath "go"
+        
+        # GitHub Windows images don't have `AGENT_TOOLSDIRECTORY` variable
+        $toolcacheDir = $env:AGENT_TOOLSDIRECTORY ?? $env:RUNNER_TOOL_CACHE
+        $expectedPath = Join-Path -Path $toolcacheDir -ChildPath "go"
         $goPath.startsWith($expectedPath) | Should -BeTrue -Because "'$goPath' is not started with '$expectedPath'"
     }
 
@@ -42,11 +48,9 @@ Describe "Go" {
         $useGoLogFile = Get-UseGoLogs
         $useGoLogFile | Should -Exist
         $useGoLogContent = Get-Content $useGoLogFile -Raw
-        $useGoLogContent | Should -Match "Found tool in cache"
+        $useGoLogContent | Should -Match "Found in cache"
     }
 
-    Set-Location -Path "source"
-    $sourceLocation = Get-Location
 
     It "Run simple code" {
         $simpleLocation = Join-Path -Path $sourceLocation -ChildPath "simple"

@@ -33,7 +33,6 @@ jobs:
         submodules: true
 
     - name: Build Go ${{ env.VERSION }}
-      shell: pwsh
       run: |
         ./builders/build-go.ps1 -Version $env:VERSION `
                                 -Platform ${{ matrix.platform }}
@@ -100,7 +99,6 @@ jobs:
         Write-Host "We need it because log of previous step 'Setup Go' is not available here yet."
         Write-Host "In testing step (Go.Tests.ps1) we analyze build log of 'Setup Go' task"
         Write-Host "to determine if Go.js version was consumed from cache and was downloaded"
-        Write-Host "Random values:"
         for ($i = 0; $i -lt 200; $i++) { Get-Random }
 
     - name: Run tests
@@ -115,8 +113,6 @@ jobs:
     if: github.event.inputs.PUBLISH_RELEASES == 'true'
     needs: test_go
     runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
     - uses: actions/download-artifact@v2
 
@@ -129,7 +125,7 @@ jobs:
         tag_name: ${{ env.VERSION }}-${{ github.run_id }}
         release_name: ${{ env.VERSION }}
         body: |
-          Upload Go ${{ env.VERSION }}
+          Go ${{ env.VERSION }}
 
     - name: Upload release assets
       uses: actions/github-script@v2
@@ -155,7 +151,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Trigger "Create Pull Request" workflow
-      uses: actions/github-script@v2
+      uses: actions/github-script@v3
       with:
         github-token: ${{ secrets.PERSONAL_TOKEN }}
         script: |

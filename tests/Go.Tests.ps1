@@ -4,6 +4,7 @@ Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 BeforeAll {
     Set-Location -Path "source"
     $sourceLocation = Get-Location
+
     function Get-UseGoLogs {
         # GitHub Windows images don't have `HOME` variable
         $homeDir = $env:HOME ?? $env:HOMEDRIVE
@@ -16,7 +17,6 @@ BeforeAll {
         return $useGoLogFile.Fullname
     }
 }
-
 
 Describe "Go" {
     It "is available" {

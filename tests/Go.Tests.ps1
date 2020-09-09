@@ -58,7 +58,7 @@ Describe "Go" {
         "go run simple.go" | Should -ReturnZeroExitCode
         "go build simple.go" | Should -ReturnZeroExitCode
         $compiledPackageName = "simple"
-        if ($IsWindows) { $compiledPackageName = "simple.exe" }
+        if ($IsWindows) { $compiledPackageName += ".exe" }
         (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 
@@ -68,7 +68,7 @@ Describe "Go" {
         "go run maps.go" | Should -ReturnZeroExitCode
         "go build maps.go" | Should -ReturnZeroExitCode
         $compiledPackageName = "maps"
-        if ($IsWindows) { $compiledPackageName = "maps.exe" }
+        if ($IsWindows) { $compiledPackageName += ".exe" }
         (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 
@@ -78,7 +78,7 @@ Describe "Go" {
         "go run methods.go" | Should -ReturnZeroExitCode
         "go build methods.go" | Should -ReturnZeroExitCode
         $compiledPackageName = "methods"
-        if ($IsWindows) { $compiledPackageName = "methods.exe" }
+        if ($IsWindows) { $compiledPackageName += ".exe" }
         (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 }

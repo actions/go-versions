@@ -57,7 +57,9 @@ Describe "Go" {
         Set-Location -Path $simpleLocation
         "go run simple.go" | Should -ReturnZeroExitCode
         "go build simple.go" | Should -ReturnZeroExitCode
-        "./simple" | Should -ReturnZeroExitCode
+        $compiledPackageName = "simple"
+        if ($IsWindows) { $compiledPackageName = "simple.exe" }
+        (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 
     It "Run maps code" {
@@ -65,7 +67,9 @@ Describe "Go" {
         Set-Location -Path $mapsLocation
         "go run maps.go" | Should -ReturnZeroExitCode
         "go build maps.go" | Should -ReturnZeroExitCode
-        "./maps" | Should -ReturnZeroExitCode
+        $compiledPackageName = "maps"
+        if ($IsWindows) { $compiledPackageName = "maps.exe" }
+        (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 
     It "Run methods code" {
@@ -73,6 +77,8 @@ Describe "Go" {
         Set-Location -Path $methodsLocation
         "go run methods.go" | Should -ReturnZeroExitCode
         "go build methods.go" | Should -ReturnZeroExitCode
-        "./methods" | Should -ReturnZeroExitCode
+        $compiledPackageName = "methods"
+        if ($IsWindows) { $compiledPackageName = "methods.exe" }
+        (Resolve-Path "./$compiledPackageName").Path | Should -ReturnZeroExitCode
     }
 }

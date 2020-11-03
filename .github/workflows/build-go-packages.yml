@@ -10,19 +10,26 @@ on:
         description: 'Whether to publish releases'
         required: true
         default: 'false'
+  pull_request:
+    paths-ignore:
+    - 'versions-manifest.json'
+    - 'LICENSE'
+    - '**.md'
+    branches:
+    - 'main'
 
 env:
-  VERSION: ${{ github.event.inputs.VERSION }}
+  VERSION: ${{ github.event.inputs.VERSION || '1.15.3' }}
 defaults:
   run:
     shell: pwsh
 
 jobs:
   build_go:
-    name: Build Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
+    name: Build Go ${{ github.event.inputs.VERSION || '1.15.3' }} [${{ matrix.platform }}]
     runs-on: ubuntu-latest
     env: 
-      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
+      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION || '1.15.3' }}-${{ matrix.platform }}-x64
     strategy:
       fail-fast: false
       matrix:
@@ -44,11 +51,11 @@ jobs:
         path: ${{ runner.temp }}/artifact
 
   test_go:
-    name: Test Go ${{ github.event.inputs.VERSION }} [${{ matrix.platform }}]
+    name: Test Go ${{ github.event.inputs.VERSION || '1.15.3' }} [${{ matrix.platform }}]
     needs: build_go
     runs-on: ${{ matrix.os }}
     env: 
-      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION }}-${{ matrix.platform }}-x64
+      ARTIFACT_NAME: go-${{ github.event.inputs.VERSION || '1.15.3' }}-${{ matrix.platform }}-x64
     strategy:
       fail-fast: false
       matrix:
@@ -89,7 +96,7 @@ jobs:
       working-directory: ${{ runner.temp }}/${{ env.ARTIFACT_NAME }}
 
     - name: Setup Go ${{ env.VERSION }}
-      uses: actions/setup-go@v2.1.1
+      uses: actions/setup-go@v2.1.3
       with:
         go-version: ${{ env.VERSION }}
 
@@ -110,7 +117,7 @@ jobs:
 
   publish_release:
     name: Publish release
-    if: github.event.inputs.PUBLISH_RELEASES == 'true'
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.PUBLISH_RELEASES == 'true'
     needs: test_go
     runs-on: ubuntu-latest
     steps:

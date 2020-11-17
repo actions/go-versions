@@ -1,4 +1,4 @@
-using module "./builders/go-builder.psm1"
+using module "./go-builder.psm1"
 
 class WinGoBuilder : GoBuilder {
     <#

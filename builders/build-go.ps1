@@ -1,5 +1,5 @@
-using module "./builders/win-go-builder.psm1"
-using module "./builders/nix-go-builder.psm1"
+using module "./win-go-builder.psm1"
+using module "./nix-go-builder.psm1"
 
 <#
 .SYNOPSIS

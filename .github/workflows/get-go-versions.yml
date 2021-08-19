@@ -51,6 +51,7 @@ jobs:
                                                                       -ToolVersion "${{ env.TOOL_VERSIONS }}" `
                                                                       -PipelineUrl "$PipelineUrl" `
                                                                       -ImageUrl "https://golang.org/lib/godoc/images/footer-gopher.jpg"
+
   trigger_builds:
     name: Trigger builds
     runs-on: ubuntu-18.04
@@ -70,3 +71,23 @@ jobs:
                                              -WorkflowDispatchRef "main" `
                                              -ToolVersions "${{ env.TOOL_VERSIONS }}" `
                                              -PublishReleases "true"
+
+  check_build:
+    name: Check build for failures 
+    runs-on: ubuntu-18.04
+    needs: [find_new_versions, check_new_versions, trigger_builds]
+    if: failure()
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - name: Send Slack notification if build fails
+        run: |
+          $PipelineUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
+          $Message = "The build of the '${{ env.TOOL_NAME }}' detection pipeline failed :progress-error:\nLink to the pipeline: $PipelineUrl"
+          ./helpers/get-new-tool-versions/send-slack-notification.ps1 -Url "${{ secrets.SLACK_CHANNEL_URL }}" `
+                                                                      -ToolName "${{ env.TOOL_NAME }}" `
+                                                                      -Text "$Message" `
+                                                                      -ImageUrl "https://golang.org/lib/godoc/images/footer-gopher.jpg"
+

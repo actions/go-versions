@@ -1,13 +1,12 @@
 name: Validate manifest
 
 on:
-   schedule:
+  schedule:
     - cron:  '0 8,20 * * *'
-    
-   pull_request:
-     branches:
+  pull_request:
+    branches:
       - main
-     paths:
+    paths:
       - 'versions-manifest.json'
 env:
   TOOL_NAME: "Go"
@@ -25,7 +24,7 @@ jobs:
           submodules: true
           
     - name: Validate python-versions manifest
-      run: .\helpers\packages-generation\manifest-validator.ps1 -ManifestPath '.\versions-manifest.json' -AccessToken ${{ secrets.GITHUB_TOKEN }}
+      run: .\helpers\packages-generation\manifest-validator.ps1 -ManifestPath '.\versions-manifest.json'
 
   check_build:
     name: Check validation for failures 

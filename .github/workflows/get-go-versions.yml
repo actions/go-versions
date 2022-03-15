@@ -51,10 +51,8 @@ jobs:
         run: |
           $pipelineUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
           $message = "The following versions of '${{ env.TOOL_NAME }}' are available to upload: ${{ env.TOOL_VERSIONS }}\nLink to the pipeline: $pipelineUrl"
-          ./helpers/get-new-tool-versions/send-slack-notification.ps1 -Url "${{ secrets.SLACK_CHANNEL_URL }}" `
-                                                                      -ToolName "${{ env.TOOL_NAME }}" `
-                                                                      -ImageUrl "https://golang.org/lib/godoc/images/footer-gopher.jpg" `
-                                                                      -Text "$message"
+          echo "$message"
+          
   trigger_builds:
     name: Trigger builds
     runs-on: ubuntu-latest
@@ -90,7 +88,4 @@ jobs:
         run: |
           $pipelineUrl = "$env:GITHUB_SERVER_URL/$env:GITHUB_REPOSITORY/actions/runs/$env:GITHUB_RUN_ID"
           $message = "The build of the '${{ env.TOOL_NAME }}' detection pipeline failed :progress-error:\nLink to the pipeline: $pipelineUrl"
-          ./helpers/get-new-tool-versions/send-slack-notification.ps1 -Url "${{ secrets.SLACK_CHANNEL_URL }}" `
-                                                                      -ToolName "${{ env.TOOL_NAME }}" `
-                                                                      -Text "$message" `
-                                                                      -ImageUrl "https://golang.org/lib/godoc/images/footer-gopher.jpg"
+          echo "$message"

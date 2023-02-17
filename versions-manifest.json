@@ -1,5 +1,30 @@
 [
   {
+    "version": "1.20.1",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.20.1-4202765537",
+    "files": [
+      {
+        "filename": "go-1.20.1-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.20.1-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.20.1-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.20.1-4202765537/go-1.20.1-win32-x64.zip"
+      }
+    ]
+  },
+  {
     "version": "1.20.0",
     "stable": true,
     "release_url": "https://github.com/actions/go-versions/releases/tag/1.20.0-4072132786",
@@ -21,6 +46,31 @@
         "arch": "x64",
         "platform": "win32",
         "download_url": "https://github.com/actions/go-versions/releases/download/1.20.0-4072132786/go-1.20.0-win32-x64.zip"
+      }
+    ]
+  },
+  {
+    "version": "1.19.6",
+    "stable": true,
+    "release_url": "https://github.com/actions/go-versions/releases/tag/1.19.6-4202767317",
+    "files": [
+      {
+        "filename": "go-1.19.6-darwin-x64.tar.gz",
+        "arch": "x64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.19.6-4202767317/go-1.19.6-darwin-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.19.6-linux-x64.tar.gz",
+        "arch": "x64",
+        "platform": "linux",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.19.6-4202767317/go-1.19.6-linux-x64.tar.gz"
+      },
+      {
+        "filename": "go-1.19.6-win32-x64.zip",
+        "arch": "x64",
+        "platform": "win32",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.19.6-4202767317/go-1.19.6-win32-x64.zip"
       }
     ]
   },

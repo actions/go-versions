@@ -1,5 +1,5 @@
 {
-    "regex": "go-\\d+\\.\\d+\\.\\d+-(\\w+)-(x\\d+)",
+    "regex": "go-\\d+\\.\\d+\\.\\d+-(\\w+)-((x|arm)\\d+)",
     "groups": {
         "arch": 2,
         "platform": 1

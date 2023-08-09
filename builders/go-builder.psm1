@@ -58,7 +58,7 @@ class GoBuilder {
         $arch = ($this.Architecture -eq "x64") ? "amd64" : $this.Architecture
         $goPlatform = ($this.Platform -Match "win32") ? "windows" : $this.Platform
         $ArchiveType = ($this.Platform -Match "win32") ? "zip" : "tar.gz"
-        If ($this.Version.Build -eq "0") {
+        If ($this.Version.Build -eq "0" -and $this.Version -lt "1.21.0") {
             $goVersion = "go$($this.Version.ToString(2))"
         } else {
             $goVersion = "go$($this.Version.ToString(3))"

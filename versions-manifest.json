@@ -5,6 +5,12 @@
     "release_url": "https://github.com/actions/go-versions/releases/tag/1.21.1-6107260229",
     "files": [
       {
+        "filename": "go-1.21.1-darwin-arm64.tar.gz",
+        "arch": "arm64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.21.1-6107260229/go-1.21.1-darwin-arm64.tar.gz"
+      },
+      {
         "filename": "go-1.21.1-darwin-x64.tar.gz",
         "arch": "x64",
         "platform": "darwin",

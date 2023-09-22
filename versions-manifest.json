@@ -61,6 +61,12 @@
     "release_url": "https://github.com/actions/go-versions/releases/tag/1.20.8-6107262237",
     "files": [
       {
+        "filename": "go-1.20.8-darwin-arm64.tar.gz",
+        "arch": "arm64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.20.8-6107262237/go-1.20.8-darwin-arm64.tar.gz"
+      },
+      {
         "filename": "go-1.20.8-darwin-x64.tar.gz",
         "arch": "x64",
         "platform": "darwin",
@@ -291,6 +297,12 @@
     "stable": true,
     "release_url": "https://github.com/actions/go-versions/releases/tag/1.19.13-6107263891",
     "files": [
+      {
+        "filename": "go-1.19.13-darwin-arm64.tar.gz",
+        "arch": "arm64",
+        "platform": "darwin",
+        "download_url": "https://github.com/actions/go-versions/releases/download/1.19.13-6107263891/go-1.19.13-darwin-arm64.tar.gz"
+      },
       {
         "filename": "go-1.19.13-darwin-x64.tar.gz",
         "arch": "x64",

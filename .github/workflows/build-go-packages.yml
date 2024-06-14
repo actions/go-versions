@@ -23,7 +23,7 @@ on:
 jobs:
   go:
     name: Go
-    uses: actions/versions-package-tools/.github/workflows/build-tool-packages.yml@main
+    uses: gowridurga.d/versions-package-tools/.github/workflows/build-tool-packages.yml@versions_changes
     with:
       tool-name: "go"
       tool-version: ${{ inputs.VERSION || '1.19.0' }}

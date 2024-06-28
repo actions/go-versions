@@ -24,14 +24,14 @@ Describe "Go" {
     }
 
     It "version is correct" {
-        [version]$Version = $env:VERSION
-        $versionOutput = Invoke-Expression -Command "go version"
-        $finalVersion = $Version.ToString(3)
-        If ($Version.Build -eq "0"){
-            $finalVersion = $Version.ToString(2)
-        }
-        $versionOutput | Should -Match $finalVersion
+    [version]$Version = $env:VERSION
+    $versionOutput = (Invoke-Expression -Command "go version") -replace "v", ""  # remove "v" prefix
+    $finalVersion = $Version.ToString(3)
+    If ($Version.Build -eq "0") {
+        $finalVersion = $Version.ToString(2)
     }
+    $versionOutput | Should -Match $finalVersion
+}
 
     It "is used from tool-cache" {
         $goPath = (Get-Command "go").Path

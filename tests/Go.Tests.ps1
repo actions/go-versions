@@ -23,11 +23,15 @@ Describe "Go" {
         "go version" | Should -ReturnZeroExitCode
     }
 
-    It "version is correct" {
+   It "version is correct" {
     [version]$Version = $env:VERSION
-    $versionOutput = (Invoke-Expression -Command "go version") -replace "v", ""  # remove "v" prefix
+    $versionOutputRaw = Invoke-Expression -Command "go version"
+    
+    # Extract the version number from the output
+    $versionOutput = ($versionOutputRaw -split " ")[2] -replace "go", ""
+    
     $finalVersion = $Version.ToString(3)
-    If ($Version.Build -eq "0") {
+    If ($Version.Build -eq "0"){
         $finalVersion = $Version.ToString(2)
     }
     $versionOutput | Should -Match $finalVersion

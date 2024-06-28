@@ -43,7 +43,7 @@ Describe "Go" {
         $goPath.startsWith($expectedPath) | Should -BeTrue -Because "'$goPath' is not started with '$expectedPath'"
     }
 
-    It "cached version is used without downloading" {
+   It "cached version is used without downloading" {
     if ($env:RUNNER_TYPE -eq "GitHub") {
         # Analyze output of previous steps to check if Go was consumed from cache or downloaded
         $useGoLogFile = Get-UseGoLogs
@@ -56,7 +56,9 @@ Describe "Go" {
         # Check if Go is installed
         $goVersion | Should -Not -BeNullOrEmpty
         # Check if the installed version of Go is the expected version
-        $goVersion -split " " | Select-Object -Index 2 -replace "go", "" -replace "v", "" | Should -Match $env:VERSION
+        $installedVersion = $goVersion -split " " | Select-Object -Index 2
+        $installedVersion = $installedVersion -replace "go", "" -replace "v", ""
+        $installedVersion | Should -Match $env:VERSION
     }
 }
 

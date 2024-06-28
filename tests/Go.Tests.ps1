@@ -24,14 +24,18 @@ Describe "Go" {
     }
 
    It "version is correct" {
-        [version]$Version = $env:VERSION
-        $versionOutput = Invoke-Expression -Command "go version"
-        $finalVersion = $Version.ToString(3)
-        If ($Version.Build -eq "0"){
-            $finalVersion = $Version.ToString(2)
-        }
-        $versionOutput | Should -Match $finalVersion
+    [version]$Version = $env:VERSION
+    $versionOutput = Invoke-Expression -Command "go version"
+    
+    # Extract only the version number from the go version command output. 
+    $installedVersion = ($versionOutput -split " ")[2] -replace "go", "" -replace "v", ""
+    
+    $finalVersion = $Version.ToString(3)
+    If ($Version.Build -eq "0"){
+        $finalVersion = $Version.ToString(2)
     }
+    $installedVersion | Should -Match $finalVersion
+}
 
 
     It "is used from tool-cache" {

@@ -58,7 +58,7 @@ Describe "Go" {
         # Check if the installed version of Go is the expected version
         $installedVersion = $goVersion -split " " | Select-Object -Index 2
         $installedVersion = $installedVersion -replace "go", "" -replace "v", ""
-        $installedVersion | Should -Like "$env:VERSION*"
+        $installedVersion | Should -BeLike "$env:VERSION*"
     }
 }
 

@@ -44,6 +44,7 @@ Describe "Go" {
     }
 
    It "cached version is used without downloading" {
+    Write-Host "Runner Type: $env:RUNNER_TYPE"
     if ($env:RUNNER_TYPE -eq "GitHub") {
         # Analyze output of previous steps to check if Go was consumed from cache or downloaded
         $useGoLogFile = Get-UseGoLogs
@@ -58,7 +59,8 @@ Describe "Go" {
         # Check if the installed version of Go is the expected version
         $installedVersion = $goVersion -split " " | Select-Object -Index 2
         $installedVersion = $installedVersion -replace "go", "" -replace "v", ""
-        $installedVersion | Should -BeLike "$env:VERSION*"
+        $expectedVersion = $env:VERSION -replace ".0", ""
+        $installedVersion | Should -BeLike "$expectedVersion*"
     }
 }
 

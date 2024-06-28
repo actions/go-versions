@@ -25,11 +25,7 @@ Describe "Go" {
 
    It "version is correct" {
     [version]$Version = $env:VERSION
-    $versionOutputRaw = Invoke-Expression -Command "go version"
-    
-    # Extract the version number from the output
-    $versionOutput = ($versionOutputRaw -split " ")[2] -replace "go", ""
-    
+    $versionOutput = (Invoke-Expression -Command "go version") -split " " | Select-Object -Index 2 -replace "go", ""
     $finalVersion = $Version.ToString(3)
     If ($Version.Build -eq "0"){
         $finalVersion = $Version.ToString(2)

@@ -1,7 +1,9 @@
 Import-Module (Join-Path $PSScriptRoot "../helpers/pester-extensions.psm1")
 Import-Module (Join-Path $PSScriptRoot "../helpers/common-helpers.psm1")
 
-BeforeAll {
+Describe "Go" {
+
+    BeforeAll {
     Set-Location -Path "source"
     $sourceLocation = Get-Location
 
@@ -18,7 +20,6 @@ BeforeAll {
     }
 }
 
-Describe "Go" {
     It "is available" {
         "go version" | Should -ReturnZeroExitCode
     }
@@ -45,13 +46,7 @@ Describe "Go" {
 
     It "cached version is used without downloading" {
     Write-Host "Runner Type: $env:RUNNER_TYPE"
-    if ($env:RUNNER_TYPE -eq "GitHub") {
-        # Analyze output of previous steps to check if Go was consumed from cache or downloaded
-        $useGoLogFile = Get-UseGoLogs
-        $useGoLogFile | Should -Exist
-        $useGoLogContent = Get-Content $useGoLogFile -Raw
-        $useGoLogContent | Should -Match "Found in cache"
-    } else {
+    if ($env:RUNNER_TYPE -eq "self-hosted") {
         # Get the installed version of Go
         $goVersion = Invoke-Expression "go version"
         # Check if Go is installed
@@ -61,7 +56,13 @@ Describe "Go" {
         $installedVersion = $installedVersion -replace "go", "" -replace "v", ""
         $expectedVersion = $env:VERSION -replace ".0", ""
         $installedVersion | Should -BeLike "$expectedVersion*"
-    }
+    }else {
+        # Analyze output of previous steps to check if Go was consumed from cache or downloaded
+        $useGoLogFile = Get-UseGoLogs
+        $useGoLogFile | Should -Exist
+        $useGoLogContent = Get-Content $useGoLogFile -Raw
+        $useGoLogContent | Should -Match "Found in cache"
+    } 
 }
 
 

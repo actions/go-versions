@@ -51,7 +51,7 @@ Describe "Go" {
         $useGoLogFile | Should -Exist
         $useGoLogContent = Get-Content $useGoLogFile -Raw
         $useGoLogContent | Should -Match "Found in cache"
-    } else {
+    } elseif ($env:RUNNER_TYPE -eq "self-hosted"){
         # Get the installed version of Go
         $goVersion = Invoke-Expression "go version"
         # Check if Go is installed

@@ -45,7 +45,7 @@ Describe "Go" {
     }
 
     It "cached version is used without downloading" {
-    Write-Host "Runner Type: $env:RUNNER_TYPE"
+    
     if ($env:RUNNER_TYPE -eq "self-hosted") {
         # Get the installed version of Go
         $goVersion = Invoke-Expression "go version"

@@ -16,12 +16,38 @@ Describe "Go" {
         )
         
         $logsFolderPath = $possiblePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
+        $resolvedPath = Resolve-Path -Path $logsFolderPath -ErrorAction SilentlyContinue
 
-        $useGoLogFile = Get-ChildItem -Path $logsFolderPath -File | Where-Object {
-            $logContent = Get-Content $_.Fullname -Raw
-            return $logContent -match "setup-go@v"
-        } | Select-Object -First 1
-        return $useGoLogFile.Fullname
+        if (-not [string]::IsNullOrEmpty($resolvedPath) -and (Test-Path $resolvedPath)) {
+            if ($logsFolderPath -eq "actions-runner/cached/_diag/pages") {
+                try {
+                    $useNodeLogFile = Get-ChildItem -Path $logsFolderPath -File| Where-Object {
+                        if (-not $_.PSIsContainer) { # Ensure it's not a directory
+                            $logContent = Get-Content $_.Fullname -Raw
+                            return $logContent -match "setup-go@v"
+                        }
+                    } | Select-Object -First 1 
+                } catch {
+                    Write-Error "Failed to resolve path: $logsFolderPath"
+                }
+            } else {
+                $useNodeLogFile = Get-ChildItem -Path $resolvedPath | Where-Object {
+                    if (-not $_.PSIsContainer) { # Ensure it's not a directory
+                        $logContent = Get-Content $_.Fullname -Raw
+                        return $logContent -match "setup-go@v"
+                    }
+                } | Select-Object -First 1                
+            }
+
+          # Return the file name if a match is found
+            if ($useNodeLogFile) {
+                return $useNodeLogFile.FullName
+            } else {
+                Write-Error "No matching log file found in the specified path."
+            }
+        } else {
+            Write-Error "The provided logs folder path is null, empty, or does not exist: $logsFolderPath"
+        }
     }
 }
 

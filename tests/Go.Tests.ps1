@@ -21,7 +21,7 @@ Describe "Go" {
         if (-not [string]::IsNullOrEmpty($resolvedPath) -and (Test-Path $resolvedPath)) {
             if ($logsFolderPath -eq "actions-runner/cached/_diag/pages") {
                 try {
-                    $useNodeLogFile = Get-ChildItem -Path $logsFolderPath -File| Where-Object {
+                    $useGoLogFile = Get-ChildItem -Path $logsFolderPath -File| Where-Object {
                         if (-not $_.PSIsContainer) { # Ensure it's not a directory
                             $logContent = Get-Content $_.Fullname -Raw
                             return $logContent -match "setup-go@v"
@@ -31,7 +31,7 @@ Describe "Go" {
                     Write-Error "Failed to resolve path: $logsFolderPath"
                 }
             } else {
-                $useNodeLogFile = Get-ChildItem -Path $resolvedPath | Where-Object {
+                $useGoLogFile = Get-ChildItem -Path $resolvedPath | Where-Object {
                     if (-not $_.PSIsContainer) { # Ensure it's not a directory
                         $logContent = Get-Content $_.Fullname -Raw
                         return $logContent -match "setup-go@v"
@@ -40,8 +40,8 @@ Describe "Go" {
             }
 
           # Return the file name if a match is found
-            if ($useNodeLogFile) {
-                return $useNodeLogFile.FullName
+            if ($useGoLogFile) {
+                return $useGoLogFile.FullName
             } else {
                 Write-Error "No matching log file found in the specified path."
             }

@@ -18,32 +18,17 @@ Describe "Go" {
         $logsFolderPath = $possiblePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
         $resolvedPath = Resolve-Path -Path $logsFolderPath -ErrorAction SilentlyContinue
 
-        if (-not [string]::IsNullOrEmpty($resolvedPath) -and (Test-Path $resolvedPath)) {
-            if ($logsFolderPath -eq "actions-runner/cached/_diag/pages") {
-                try {
-                    $useGoLogFile = Get-ChildItem -Path $logsFolderPath -File| Where-Object {
-                        if (-not $_.PSIsContainer) { # Ensure it's not a directory
-                            $logContent = Get-Content $_.Fullname -Raw
-                            return $logContent -match "setup-go@v"
-                        }
-                    } | Select-Object -First 1 
-                } catch {
-                    Write-Error "Failed to resolve path: $logsFolderPath"
-                }
-            } else {
+        if ($resolvedPath -and -not [string]::IsNullOrEmpty($resolvedPath.Path) -and (Test-Path $resolvedPath.Path)) {                
                 $useGoLogFile = Get-ChildItem -Path $resolvedPath | Where-Object {
-                    if (-not $_.PSIsContainer) { # Ensure it's not a directory
                         $logContent = Get-Content $_.Fullname -Raw
-                        return $logContent -match "setup-go@v"
-                    }
-                } | Select-Object -First 1                
-            }
+                        return $logContent -match "setup-go@v"                   
+                } | Select-Object -First 1                          
 
           # Return the file name if a match is found
             if ($useGoLogFile) {
                 return $useGoLogFile.FullName
             } else {
-                Write-Error "No matching log file found in the specified path."
+                Write-Error "No matching log file found in the specified path: $($resolvedPath.Path)"
             }
         } else {
             Write-Error "The provided logs folder path is null, empty, or does not exist: $logsFolderPath"

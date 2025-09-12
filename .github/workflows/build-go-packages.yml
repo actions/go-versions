@@ -1,4 +1,4 @@
-name: Generate Go package
+permissions: name: Generate Go package
 run-name: Generate Go ${{ inputs.VERSION || '1.19.0' }}
 on:
   workflow_dispatch:

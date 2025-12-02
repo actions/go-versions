@@ -66,7 +66,7 @@ class GoBuilder {
 
         $filename = "$goVersion.$goPlatform-$arch.$ArchiveType"
 
-        return "https://storage.googleapis.com/golang/$filename"
+        return "https://go.dev/dl/$filename"
     }
 
     [string] Download() {

@@ -13,6 +13,7 @@ Describe "Go" {
         $possiblePaths = @(
             Join-Path -Path $homeDir -ChildPath "actions-runner/cached/_diag/pages"
             Join-Path -Path $homeDir -ChildPath "runners/*/_diag/pages"
+            Join-Path -Path $homeDir -ChildPath "actions-runner/extracted/_diag/pages"
         )
         
         $logsFolderPath = $possiblePaths | Where-Object { Test-Path $_ } | Select-Object -First 1
